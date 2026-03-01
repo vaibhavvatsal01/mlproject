@@ -17,7 +17,7 @@ from src.logger import logging
 from src.utils import save_object,evaluate_models
 @dataclass
 class ModelTrainerConfig:
-    trained_model_file_path=os.path.join("artifacts","model.pkl")
+    trained_model_file_path = os.path.join(os.getcwd(),"artifacts","model.pkl")
 class ModelTrainer:
     def __init__(self):
         self.model_trainer_config=ModelTrainerConfig()
@@ -86,6 +86,7 @@ class ModelTrainer:
             if best_model_score<0.6:
                 raise CustomException("No best model found")
             logging.info(f"Best model found:{best_model_name} with r2 score:{best_model_score}")
+            os.makedirs(os.path.dirname(self.model_trainer_config.trained_model_file_path), exist_ok=True)
             save_object(
                 file_path=self.model_trainer_config.trained_model_file_path,
                 obj=best_model

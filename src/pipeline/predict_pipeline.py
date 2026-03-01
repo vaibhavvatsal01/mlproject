@@ -27,7 +27,7 @@ class Customdata:
          test_preparation_course:str,
          lunch:str,
          reading_score:int,
-         wrinting_score:int
+         writing_score:int
     ) :
         self.gender=gender
         self.race_ethnicity=race_ethnicity
@@ -35,7 +35,7 @@ class Customdata:
         self.test_preparation_course=test_preparation_course
         self.lunch=lunch
         self.reading_score=reading_score
-        self.wrinting_score=wrinting_score
+        self.writing_score=writing_score
     def get_data_as_data_frame(self):
         try:
             custom_data_input_dict={
@@ -45,10 +45,10 @@ class Customdata:
                 "test_preparation_course":[self.test_preparation_course],   
                 "lunch":[self.lunch],
                 "reading_score":[self.reading_score],
-                "wrinting_score":[self.wrinting_score],  
+                "writing_score":[self.writing_score],  
             }    
             return pd.DataFrame(custom_data_input_dict)
-        except exception as e:
+        except Exception as e:
             raise CustomException(e,sys)
         
 
